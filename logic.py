@@ -37,4 +37,4 @@ def search(day="current_day_str", age=45, availablilty=1):
                               i['name'] + " on " + j['date'] + " between " + str(j['slots']))
 
 
-search(day="current_day_str", age=18, availablilty=1)
+search(day="current_day_str", age=45, availablilty=1)
