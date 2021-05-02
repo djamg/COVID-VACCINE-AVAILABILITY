@@ -9,7 +9,7 @@ from dateutil.tz import gettz
 
 # Use a service account
 cred = credentials.Certificate(
-    './static/cowin-vaxify-firebase-adminsdk-unuxn-092e83f077.json')
+    'F:\Programming\COWIN API\static\cowin-vaxify-firebase-adminsdk-unuxn-092e83f077.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
