@@ -258,3 +258,15 @@ table {
 
 .child5 {
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 25px;
+  width: 100%;
+  background-color: rgb(123, 255, 0);
+  color: rgb(0, 79, 170);
+  text-align: center;
+  flex-shrink: 0;
+}
