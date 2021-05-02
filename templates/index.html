@@ -2,13 +2,86 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <title>About Flask</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+    <!-- <link rel="stylesheet" href="/static/css/template.css"> -->
+  
+    <title>VAXIFY</title>
   </head>
   <body>
-    <h1> About Flask </h1>
-    <p> Flask is a micro web framework written in Python.</p>
-    <p> Applications that use the Flask framework include Pinterest,
-      LinkedIn, and the community web page for Flask itself.</p>
-  </body>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        
+        <div class="parent">
+        <form action="" method="get">
+          <div class="child1">
+            <div class="logo"><img src="\static\vaccine.png"></div>
+            <div class="title">
+              <div class="title-text">VAXIFY</div>
+              <div class="title-sub-text">VACCINE NOTIFIER</div>
+            </div>
+          </div>
+          
+          <div class="child2">
+            <div class="age">
+              <div class="age-title">WHAT IS YOUR AGE?</div>
+              <div class="age-entry">
+                <label>
+                  <input class="age-check" id="18" type="checkbox" name="age" value="18"/>
+                  <span class="checkmark">18+</span>
+                </label>
+                <label>
+                  <input class="age-check" id="45" type="checkbox" checked="checked" name="age" value="45"/>
+                  <span class="checkmark">45+</span>
+                </label>
+                
+
+              </div>
+            </div>
+          </div>
+
+          <div class="child3">
+            <div class="email-title">
+                <label for="email" class="email">ENTER YOUR MAIL IF YOU WISH TO GET NOTIFIED (optional):</label>
+                <div class="email-entry">
+                  <input type="email" id="email" name="email" class="email-label">
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="child4">
+            <div class="child4-title">
+              CHECK AVAILABILITY
+            </div>
+            <div class="button-element">
+              <input type="submit" value="TODAY" name="day"/>
+              <input type="submit" value="TOMORROW" name="day"/>
+
+              <!-- <button class="button button1">TODAY</button>
+              <button class="button button2">THIS WEEK</button> -->
+            </div>
+          </div>
+
+          <div class="child5" style="">
+            <div class="child5-title"></div>
+            
+            <table id="hospitals">
+              <tr>
+                <th>Sl. No.</th>
+                <th>Availability</th>
+              </tr>
+              {%for i in output%}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{i}}</td>
+              </tr>
+              {% endfor %}
+             
+          </div>
+        </form>  
+        </div>
+        
+</body>
 </html>

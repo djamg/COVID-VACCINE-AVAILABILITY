@@ -25,6 +25,7 @@ response_json = response.json()
 
 
 def search(day="current_day_str", age=45, availablilty=1):
+    dictr = []
     print("For age {} and above: ".format(age))
     for i in response_json["centers"]:
         # print(i["sessions"])
@@ -33,8 +34,16 @@ def search(day="current_day_str", age=45, availablilty=1):
             if j["available_capacity"] >= availablilty:
                 if j["min_age_limit"] == age:
                     if j["date"] == one_day.strftime("%d-%m-%Y"):
-                        print(str(j["available_capacity"]) + " " + j["vaccine"] + " vaccines are available at: " +
-                              i['name'] + " on " + j['date'] + " between " + str(j['slots']))
+                        # print(str(j["available_capacity"]) + " " + j["vaccine"] + " vaccines are available at: " +
+                        #       i['name'] + " on " + j['date'] + " between " + str(j['slots']))
+                        dictr.append(str(j["available_capacity"]) + " " + j["vaccine"] + " vaccines are available at: " +
+                                     i['name'] + " on " + j['date'] +
+                                     " between " + str(j['slots']))
+
+    return(dictr)
+
+# search(day="current_day_str", age=45, availablilty=1)
 
 
-search(day="current_day_str", age=45, availablilty=1)
+# x = search(day="current_day_str", age=45, availablilty=1)
+# print(x)
