@@ -2,6 +2,23 @@ from flask import Flask, render_template, request
 import logic
 import datetime
 from datetime import timedelta
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use a service account
+cred = credentials.Certificate(
+    './static/cowin-vaxify-firebase-adminsdk-unuxn-bbd22b1b45.json')
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+
+doc_ref = db.collection(u'users').document(u'alovelace')
+doc_ref.set({
+    u'first': u'Ada',
+    u'last': u'Lovelace',
+    u'born': 1815
+})
 
 date_object = datetime.date.today()
 current_day_str = date_object.strftime("%d-%m-%Y")
@@ -26,6 +43,11 @@ def home():
         # output = request.form['email'] + \
         #     request.form['age'] + request.form['day']
         # print(str(output))
+        db.collection(u'users').add({
+            u'email': request.form['email'],
+            u'age': request.form['age'],
+            u'day': request.form['day']
+        })
 
         if request.form['age'] == "18":
             availablilty = 0
