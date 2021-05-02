@@ -5,20 +5,15 @@ from datetime import timedelta
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from dateutil.tz import gettz
 
 # Use a service account
 cred = credentials.Certificate(
-    './static/cowin-vaxify-firebase-adminsdk-unuxn-bbd22b1b45.json')
+    './static/cowin-vaxify-firebase-adminsdk-unuxn-092e83f077.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-doc_ref = db.collection(u'users').document(u'alovelace')
-doc_ref.set({
-    u'first': u'Ada',
-    u'last': u'Lovelace',
-    u'born': 1815
-})
 
 date_object = datetime.date.today()
 current_day_str = date_object.strftime("%d-%m-%Y")
@@ -46,7 +41,8 @@ def home():
         db.collection(u'users').add({
             u'email': request.form['email'],
             u'age': request.form['age'],
-            u'day': request.form['day']
+            u'day': request.form['day'],
+            u'timestamp': datetime.datetime.now(tz=gettz('Asia/Kolkata'))
         })
 
         if request.form['age'] == "18":
