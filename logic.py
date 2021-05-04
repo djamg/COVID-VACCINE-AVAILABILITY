@@ -25,12 +25,12 @@ def search(day=current_day_str, age=45, availablilty=1):
     url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={district}&date={day}".format(
         district=str(district), day=day)
     print(url)
-    response = requests.request("GET", url)
-    response_json = response.json()
+    response = requests.get(url).json()
+    # response_json = response.json()
     # print(response_json["centers"])
     dictr = []
     print("For age {} and above: ".format(age))
-    for i in response_json["centers"]:
+    for i in response["centers"]:
         # print(i["sessions"])
         for j in i["sessions"]:
             # print(j["available_capacity"])
