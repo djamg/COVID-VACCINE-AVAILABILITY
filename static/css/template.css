@@ -166,9 +166,6 @@ label .email-label {
   align-items: center;
 }
 
-.button-element {
-}
-
 .button {
   border: none;
   background-color: rgb(72, 167, 255);
@@ -258,9 +255,6 @@ table {
 .child5 .center {
   margin-left: auto;
   margin-right: auto;
-}
-
-.child5 {
 }
 
 .footer {
