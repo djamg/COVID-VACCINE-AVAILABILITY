@@ -6,6 +6,8 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from dateutil.tz import gettz
+import json
+
 
 # Use a service account
 cred = credentials.Certificate(
@@ -45,6 +47,9 @@ def home():
             u'timestamp': datetime.datetime.now(tz=gettz('Asia/Kolkata'))
         })
 
+        availability = 1
+        age = 45
+
         if request.form['age'] == "18":
             availablilty = 0
         elif request.form['age'] == "45":
@@ -53,12 +58,16 @@ def home():
             day = current_day_str
         elif request.form['day'] == "TOMORROW":
             day = one_day_str
+        elif request.form['day'] == "DAY AFTER":
+            day = two_day_str
+
         # print(request.form['day'])
         # print(day)
-        output = logic.search(
-            day=day, age=int(request.form['age']), availablilty=availablilty)
-        print(output)
-        return render_template("index.html", output=output)
+        output = logic.search(day=day, age=int(
+            request.form['age']), availablilty=availablilty)
+        # print(type(json.loads(output)))
+        # print(output)
+        return render_template("index.html", output=json.loads(output))
 
 
 @app.errorhandler(404)

@@ -6,6 +6,17 @@ from datetime import timedelta
 import pytz
 tz_NY = pytz.timezone('Asia/Kolkata')
 
+# ex_dicti = {
+#     "hospital_id": {
+#         "hospital_name" : "NAME",
+#         "vaccine" : "NAME",
+#         "avb" : "int",
+#         "slots": "time",
+#         "age": "int"
+#     }
+# }
+
+dicti = {}
 
 date_object = datetime.now(tz_NY)
 current_day_str = date_object.strftime("%d-%m-%Y")
@@ -21,7 +32,6 @@ two_day_str = two_day.strftime("%d-%m-%Y")
 
 
 def search(day=current_day_str, age=45, availablilty=1):
-    dicti = {}
     district = 294
     url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={district}&date={day}".format(
         district=str(district), day=day)

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 70%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      </style>
+</head>
+<body>
+    Table
+
+            
+            {% if output %}
+            <table id="hospitals">
+               <tr>
+                <th>Sl. No.</th>
+                <th>Hospital</th>
+                <th>Vaccine</th>
+                <th>Availability</th>
+                <th>Time Slot</th>
+                <th>Age</th>
+                <th>Fee</th>
+
+
+              </tr>
+              
+              {% for key,item in output.items() %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td><a href="https://www.google.com/search?q={{ item['hospital_name'] }}%20hospital " target="_blank">{{ item["hospital_name"] }}</td>
+                <td>{{ item["vaccine"] }}</td>
+                <td>{{ item["availability"] }}</td>
+                <td>{{ item["slots"] }}</td>
+                <td>{{ item["age"] }}+</td>
+                <td>{{ item["fee_type"] }}</td>
+              </tr>
+              
+              {% endfor %}
+              {% endif %}
+              </table>
+
+    </body>
+</html>

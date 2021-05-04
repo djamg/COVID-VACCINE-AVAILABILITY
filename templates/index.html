@@ -70,7 +70,7 @@
             <div class="button-element">
               <input type="submit" value="TODAY" name="day"/>
               <input type="submit" value="TOMORROW" name="day"/>
-
+              <input type="submit" value="DAY AFTER" name="day"/>
               <!-- <button class="button button1">TODAY</button>
               <button class="button button2">THIS WEEK</button> -->
             </div>
@@ -81,17 +81,28 @@
             {% if output %}
             <table id="hospitals">
                <tr>
-                <th>Sl. No.</th>
-                <th>Availability</th>
+                <!-- <th>Sl. No.</th> -->
+                <th>Hospital </th>
+                <th>Vaccine</th>
+                <th>Avb.</th>
+                <!-- <th>Time Slot</th> -->
+                <th>Age</th>
+                <th>Fee</th>
+
+
               </tr>
               
-              {%for i in output%}
+              {% for key,item in output.items() %}
               <tr>
-                
-                <td>{{ loop.index }}</td>
-                <td><a href="https://selfregistration.cowin.gov.in/" target="_blank">{{i}}</a></td>
-              
+                <!-- <td>{{ loop.index }}</td> -->
+                <td class="hp"><a href="https://www.google.com/search?q={{ item['hospital_name'] }}%20hospital " target="_blank">{{ item["hospital_name"] }} <br>{{item["date"]}}</td>
+                <td >{{ item["vaccine"] }}</td>
+                <td>{{ item["availability"] }}</td>
+                <!-- <td><a href="https://selfregistration.cowin.gov.in/" target="_blank">{{ item["slots"] }}</a></td> -->
+                <td>{{ item["age"] }}+</td>
+                <td><a href="https://selfregistration.cowin.gov.in/" target="_blank">{{ item["fee_type"] }}</a></td>
               </tr>
+              
               {% endfor %}
               {% endif %}
               </table>
