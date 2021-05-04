@@ -29,7 +29,7 @@ def search(day=current_day_str, age=45, availablilty=1):
     # response_json = response.json()
     # print(response_json["centers"])
     dictr = []
-    print("For age {} and above: ".format(age))
+    # print("For age {} and above: ".format(age))
     for i in response["centers"]:
         # print(i["sessions"])
         for j in i["sessions"]:

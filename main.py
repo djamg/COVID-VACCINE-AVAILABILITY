@@ -57,7 +57,7 @@ def home():
         # print(day)
         output = logic.search(
             day=day, age=int(request.form['age']), availablilty=availablilty)
-        # print(output)
+        print(output)
         return render_template("index.html", output=output)
 
 
