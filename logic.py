@@ -1,9 +1,13 @@
 import requests
 import datetime
 import json
+from datetime import datetime
 from datetime import timedelta
+import pytz
+tz_NY = pytz.timezone('Asia/Kolkata')
 
-date_object = datetime.date.today()
+
+date_object = datetime.now(tz_NY)
 current_day_str = date_object.strftime("%d-%m-%Y")
 # print(current_day_str)
 
