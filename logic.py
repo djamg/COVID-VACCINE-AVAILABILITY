@@ -23,10 +23,12 @@ two_day_str = two_day.strftime("%d-%m-%Y")
 def search(day=current_day_str, age=45, availablilty=1):
     dicti = {}
     district = 294
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97"}
     url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={district}&date={day}".format(
         district=str(district), day=day)
     # print(url)
-    response = requests.get(url)
+    response = requests.get(url, headers=headers)
     response1 = response.json()
     for i in response1["centers"]:
         # print(i["name"])
@@ -45,8 +47,9 @@ def search(day=current_day_str, age=45, availablilty=1):
                         "age": j["min_age_limit"],
                         "fee_type": i["fee_type"],
                         "slots": j["slots"]}
+    # print(json.dumps(dicti))
     return(json.dumps(dicti))
     # print(response1["centers"]["center_id"])
 
 
-# search(day=two_day_str, age=18, availablilty=0)
+# search(day=two_day_str, age=45, availablilty=0)

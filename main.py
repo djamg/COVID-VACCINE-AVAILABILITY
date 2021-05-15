@@ -53,7 +53,7 @@ def home():
         if request.form['age'] == "18":
             availablilty = 0
         elif request.form['age'] == "45":
-            availablilty = 1
+            availablilty = 0
         if request.form['day'] == "TODAY":
             day = current_day_str
         elif request.form['day'] == "TOMORROW":
