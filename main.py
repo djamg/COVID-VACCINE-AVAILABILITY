@@ -34,6 +34,18 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
+    date_object = datetime.date.today()
+    current_day_str = date_object.strftime("%d-%m-%Y")
+    # print(current_day_str)
+
+    one_day = date_object + timedelta(days=1)
+    one_day_str = one_day.strftime("%d-%m-%Y")
+    # print(one_day.strftime("%d-%m-%Y"))
+
+    two_day = date_object + timedelta(days=2)
+    two_day_str = two_day.strftime("%d-%m-%Y")
+    # print(two_day.strftime("%d-%m-%Y"))
+
     if request.method == "GET":
         return render_template("index.html")
     elif request.method == "POST":
